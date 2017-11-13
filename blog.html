@@ -33,7 +33,7 @@
             <div class="navbar-main">
                 <div class="logo popup-left"><a href="#"><img src="img/logo.png" alt="logo" width="160px"></a></div>
             </div>
-            
+
             <ul id="mobile_nav" class="mobile-hidden">
                 <li><a class="scroll" href="#home">Главная</a></li>
                 <li><a class="scroll" href="#services">Услуги</a></li>
@@ -42,23 +42,27 @@
 
                 <div id="toggle_nav" onclick="showNav();"><img src="img/menu-button.svg" alt=""></div>
             </ul>
-            
+
             <ul id="articles_list" class="panel-group">
-                <?php foreach($posts as $post) {?>
+                <?php for($i = 0; $i < count($posts); $i++) {?>
                 <li class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#articles_list" href="#article<?= $post->getID(); ?>">
-                                <span class="popup-left"><?= $post->getTitle(); ?></span>
+                            <a data-toggle="collapse" data-parent="#articles_list" href="#article<?= $posts[$i]->getID(); ?>">
+                                <span class="popup-left"><?= $posts[$i]->getTitle(); ?></span>
                             </a>
                         </h4>
                     </div>
-
-                    <div id="#article<?= $post->getID(); ?>" class="panel-collapse collapse in">
+                    <?php
+                    if($i == 0)
+                        echo '<div id="#article' . $posts[$i]->getID() . '" class="panel-collapse collapse in">';
+                    else
+                        echo '<div id="#article' . $posts[$i]->getID() . '" class="panel-collapse collapse">';
+                    ?>
                         <div class="panel-body">
                             <img class="article-image" src="img/article_img_example.jpg" alt="">
                             <div class="article-text-holder">
-                                <span><?= $post->getText(); ?></span>
+                                <span><?= $posts[$i]->getText(); ?></span>
                                 <a href="#" class="article-more-link">Подробнее...</a>
                             </div>
                         </div>
