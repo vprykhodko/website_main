@@ -698,12 +698,20 @@ textarea {
     padding: 0 40px;
     text-align: justify;
 }
+.article-text-holder>span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    max-height: 162px;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
 .article-more-link {
     color: #1c5454;
     font-size: 14px;
     font-weight: 700;
     float: right;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .article-more-link:hover {
     -webkit-transition: all 550ms ease;
