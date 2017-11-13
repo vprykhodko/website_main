@@ -44,111 +44,31 @@
             </ul>
 
             <ul id="articles_list" class="panel-group">
-                <?php for($i = 0; $i < count($posts); $i++) {?>
+                <?php for($i = 0; $i < count($posts); $i++) { ?>
                 <li class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#articles_list" href="#article<?= $posts[$i]->getID(); ?>">
-                                <span class="popup-left"><?= $posts[$i]->getTitle(); ?></span>
+                            <a data-toggle="collapse" data-parent="#articles_list" href="#collapse<?=$i?>">
+                                <span class="popup-left"><?=$posts[$i]->getTitle()?></span>
                             </a>
                         </h4>
                     </div>
                     <?php
                     if($i == 0)
-                        echo '<div id="#article' . $posts[$i]->getID() . '" class="panel-collapse collapse in">';
+                        echo '<div id="collapse' . $i . '" class="panel-collapse collapse in">';
                     else
-                        echo '<div id="#article' . $posts[$i]->getID() . '" class="panel-collapse collapse">';
+                        echo '<div id="collapse' . $i . '" class="panel-collapse collapse">';
                     ?>
                         <div class="panel-body">
                             <img class="article-image" src="img/article_img_example.jpg" alt="">
                             <div class="article-text-holder">
-                                <span><?= $posts[$i]->getText(); ?></span>
+                                <span><?=$posts[$i]->getText()?></span>
                                 <a href="article.php?id=<?= $posts[$i]->getID(); ?>" class="article-more-link">Подробнее...</a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <?php } ?>
-
-                <!--<li class="panel panel-default">-->
-                    <!--<div class="panel-heading">-->
-                        <!--<h4 class="panel-title">-->
-                            <!--<a data-toggle="collapse" data-parent="#articles_list" href="#collapse2">-->
-                                <!--<span class="popup-left">Landing page</span>-->
-                            <!--</a>-->
-                        <!--</h4>-->
-                    <!--</div>-->
-
-                    <!--<div id="collapse2" class="panel-collapse collapse">-->
-                        <!--<div class="panel-body">-->
-                            <!--<img class="article-image" src="img/article_img_example.jpg" alt="">-->
-                            <!--<div class="article-text-holder">-->
-                                <!--<span>Это сайт для красивой и презентации и продажи вашего товара или услуги.  Подходит временным и постоянным проектам. Главная задача лендинга продажи и сбор контактных даных вашей целевой аудитории.</span>-->
-                                <!--<a href="#" class="article-more-link">Подробнее...</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
-
-                <!--<li class="panel panel-default">-->
-                    <!--<div class="panel-heading">-->
-                        <!--<h4 class="panel-title">-->
-                            <!--<a data-toggle="collapse" data-parent="#articles_list" href="#collapse3">-->
-                                <!--<span class="popup-left">Landing page</span>-->
-                            <!--</a>-->
-                        <!--</h4>-->
-                    <!--</div>-->
-
-                    <!--<div id="collapse3" class="panel-collapse collapse">-->
-                        <!--<div class="panel-body">-->
-                            <!--<img class="article-image" src="img/article_img_example.jpg" alt="">-->
-                            <!--<div class="article-text-holder">-->
-                                <!--<span>Это сайт для красивой и презентации и продажи вашего товара или услуги.  Подходит временным и постоянным проектам. Главная задача лендинга продажи и сбор контактных даных вашей целевой аудитории.</span>-->
-                                <!--<a href="#" class="article-more-link">Подробнее...</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
-
-                <!--<li class="panel panel-default">-->
-                    <!--<div class="panel-heading">-->
-                        <!--<h4 class="panel-title">-->
-                            <!--<a data-toggle="collapse" data-parent="#articles_list" href="#collapse4">-->
-                                <!--<span class="popup-left">Landing page</span>-->
-                            <!--</a>-->
-                        <!--</h4>-->
-                    <!--</div>-->
-
-                    <!--<div id="collapse4" class="panel-collapse collapse">-->
-                        <!--<div class="panel-body">-->
-                            <!--<img class="article-image" src="img/article_img_example.jpg" alt="">-->
-                            <!--<div class="article-text-holder">-->
-                                <!--<span>Это сайт для красивой и презентации и продажи вашего товара или услуги.  Подходит временным и постоянным проектам. Главная задача лендинга продажи и сбор контактных даных вашей целевой аудитории.</span>-->
-                                <!--<a href="#" class="article-more-link">Подробнее...</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
-                <!---->
-                <!--<li class="panel panel-default">-->
-                    <!--<div class="panel-heading">-->
-                        <!--<h4 class="panel-title">-->
-                            <!--<a data-toggle="collapse" data-parent="#articles_list" href="#collapse5">-->
-                                <!--<span class="popup-left">Landing page</span>-->
-                            <!--</a>-->
-                        <!--</h4>-->
-                    <!--</div>-->
-
-                    <!--<div id="collapse5" class="panel-collapse collapse">-->
-                        <!--<div class="panel-body">-->
-                            <!--<img class="article-image" src="img/article_img_example.jpg" alt="">-->
-                            <!--<div class="article-text-holder">-->
-                                <!--<span>Это сайт для красивой и презентации и продажи вашего товара или услуги.  Подходит временным и постоянным проектам. Главная задача лендинга продажи и сбор контактных даных вашей целевой аудитории.</span>-->
-                                <!--<a href="#" class="article-more-link">Подробнее...</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
             </ul>
             
             <div class="articles-float-img-1"><img src="img/pallete.svg" alt=""></div>
