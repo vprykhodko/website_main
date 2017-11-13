@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>Админ панель</title>
+</head>
+
+<body>
+
+<h1>Админ панель</h1>
+
+<div>
+    <form action="index.php" method="post" enctype="application/x-www-form-urlencoded">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" value="<?= $post->getTitle() ?>" required>
+
+        <label for="text">Text</label>
+        <textarea id="text" name="text" required><?= $post->getText() ?></textarea>
+
+        <input type="hidden" name="data-id" value="<?= $post->getID() ?>">
+        <input type="hidden" name="action" value="edit">
+
+        <input type="submit" value="Редактировать">
+    </form>
+</div>
+
+</body>
+
+</html>

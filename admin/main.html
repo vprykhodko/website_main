@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Админ панель</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Админ панель</h1>
+    <h2><a href="add-post.html">Добавить</a></h2>
+
+    <table class="admin-table">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Text</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <?php foreach($posts as $post): ?>
+        <tr>
+            <td><?= $post->getID(); ?></td>
+            <td><?= $post->getTitle(); ?></td>
+            <td><?= $post->getText(); ?></td>
+            <td><a href="edit-post.php?id=<?= $post->getID(); ?>">Редактировать</a></td>
+            <td class="delete-post" data-id="<?= $post->getID(); ?>">Удалить</td>
+        </tr>
+        <?php endforeach ?>
+
+    </table>
+
+</body>
+
+</html>
+
+<script>
+    $('.delete-post').on( "click", function() {
+        var obj = this;
+        var data = {dataID: $(this).attr('data-id')};
+        $.ajax({
+            url: 'index.php',
+            type: 'POST',
+            data: data,
+            error: function () {
+                console.log('err');
+            },
+            success: function (result) {
+                $(obj).parent().remove();
+            }
+        });
+    });
+</script>
