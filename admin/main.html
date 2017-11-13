@@ -17,6 +17,8 @@
             <th>ID</th>
             <th>Title</th>
             <th>Text</th>
+            <th>ImgURL</th>
+            <th>Counter</th>
             <th></th>
             <th></th>
         </tr>
@@ -26,6 +28,8 @@
             <td><?= $post->getID(); ?></td>
             <td><?= $post->getTitle(); ?></td>
             <td><?= $post->getText(); ?></td>
+            <td><?= $post->getImgURL(); ?></td>
+            <td><?= $post->getCounter(); ?></td>
             <td><a href="edit-post.php?id=<?= $post->getID(); ?>">Редактировать</a></td>
             <td class="delete-post" data-id="<?= $post->getID(); ?>">Удалить</td>
         </tr>

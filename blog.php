@@ -6,6 +6,6 @@ require_once("DBUtils.php");
 
 use app\DBUtils;
 
-$posts = DBUtils::getAllPosts();
+$posts = DBUtils::getAllPostsSortedByCounter();
 
 include("blog.html");

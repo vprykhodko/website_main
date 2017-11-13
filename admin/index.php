@@ -11,11 +11,11 @@ if(!empty($_POST))
 {
     if($_POST['action'] == 'add')
     {
-        DBUtils::addPost($_POST['title'], $_POST['text']);
+        DBUtils::addPost($_POST['title'], $_POST['text'], $_POST['imgURL']);
     }
     else if($_POST['action'] == 'edit')
     {
-        DBUtils::editPost($_POST['data-id'], $_POST['title'], $_POST['text']);
+        DBUtils::editPost($_POST['data-id'], $_POST['title'], $_POST['text'], $_POST['imgURL']);
     }
     // TODO Delete with ajax
     else

@@ -15,6 +15,9 @@
         <label for="title">Title</label>
         <input type="text" id="title" name="title" value="<?= $post->getTitle() ?>" required>
 
+        <label for="imgURL">Image URL</label>
+        <input type="text" id="imgURL" name="imgURL" value="<?= $post->getImgURL() ?>" required>
+
         <label for="text">Text</label>
         <textarea id="text" name="text" required><?= $post->getText() ?></textarea>
 

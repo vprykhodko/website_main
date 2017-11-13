@@ -45,7 +45,30 @@ class DBUtils
         $posts = [];
         while($row = $result->fetch_assoc())
         {
-            $posts[] = new Post($row['ID'], $row['title'], $row['text']);
+            $posts[] = new Post($row['ID'], $row['title'], $row['text'], $row['imgURL'], $row['counter']);
+        }
+
+        $mysqli->close();
+        return $posts;
+    }
+
+    public static function getAllPostsSortedByCounter()
+    {
+        $mysqli = DBUtils::getConnection();
+
+        $query = "SELECT * FROM Posts ORDER BY `counter` DESC;";
+        $result = $mysqli->query($query);
+
+        if($result->num_rows == 0)
+        {
+            $mysqli->close();
+            return null;
+        }
+
+        $posts = [];
+        while($row = $result->fetch_assoc())
+        {
+            $posts[] = new Post($row['ID'], $row['title'], $row['text'], $row['imgURL'], $row['counter']);
         }
 
         $mysqli->close();
@@ -66,16 +89,16 @@ class DBUtils
         }
 
         $row = $result->fetch_assoc();
-        $post = new Post($row['ID'], $row['title'], $row['text']);
+        $post = new Post($row['ID'], $row['title'], $row['text'], $row['imgURL'], $row['counter']);
 
         $mysqli->close();
         return $post;
     }
 
-    public static function addPost($title, $text)
+    public static function addPost($title, $text, $imgURL)
     {
         $mysqli = DBUtils::getConnection();
-        $query = "INSERT INTO Posts (`title`, `text`) VALUES ('$title', '$text');";
+        $query = "INSERT INTO Posts (`title`, `text`, `imgURL`) VALUES ('$title', '$text', '$imgURL');";
 
         if($mysqli->query($query))
             $result = true;
@@ -86,10 +109,10 @@ class DBUtils
         return $result;
     }
 
-    public static function editPost($ID, $title, $text)
+    public static function editPost($ID, $title, $text, $imgURL)
     {
         $mysqli = DBUtils::getConnection();
-        $query = "UPDATE Posts SET title='$title', text='$text' WHERE ID=$ID;";
+        $query = "UPDATE Posts SET title='$title', text='$text', imgURL='$imgURL' WHERE ID=$ID;";
 
         if($mysqli->query($query))
             $result = true;
@@ -104,6 +127,21 @@ class DBUtils
     {
         $mysqli = DBUtils::getConnection();
         $query = "DELETE FROM Posts WHERE ID=$ID;";
+
+        if($mysqli->query($query))
+            $result = true;
+        else
+            $result = false;
+
+        $mysqli->close();
+        return $result;
+    }
+
+    public static function increaseCounter($ID, $counter)
+    {
+        $mysqli = DBUtils::getConnection();
+        $counter++;
+        $query = "UPDATE Posts SET counter = $counter WHERE ID = $ID;";
 
         if($mysqli->query($query))
             $result = true;
