@@ -63,7 +63,7 @@
                             <img class="article-image" src="img/article_img_example.jpg" alt="">
                             <div class="article-text-holder">
                                 <span><?= $posts[$i]->getText(); ?></span>
-                                <a href="#" class="article-more-link">Подробнее...</a>
+                                <a href="article.php?id=<?= $posts[$i]->getID(); ?>" class="article-more-link">Подробнее...</a>
                             </div>
                         </div>
                     </div>

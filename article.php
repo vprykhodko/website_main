@@ -8,4 +8,4 @@ use app\DBUtils;
 
 $post = DBUtils::getPost($_GET['id']);
 
-include("post.html");
+include("article.html");
