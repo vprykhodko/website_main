@@ -8,4 +8,4 @@ use app\DBUtils;
 
 $posts = DBUtils::getAllPosts();
 
-include("blog_all.html");
+include("blog.html");
