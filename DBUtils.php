@@ -6,6 +6,7 @@ define('MYSQL_SERVER', '127.0.0.1');
 define('MYSQL_USER', 'root');
 define('MYSQL_PASSWORD', '517');
 define('MYSQL_DB', 'web-site');
+define('UPLOAD_DIR', 'uploads/');
 
 require_once("Post.php");
 
@@ -95,29 +96,61 @@ class DBUtils
         return $post;
     }
 
-    public static function addPost($title, $text, $imgURL)
+    // $img -> $_FILES['img']
+    public static function addPost($title, $text, $img)
     {
-        $mysqli = DBUtils::getConnection();
-        $query = "INSERT INTO Posts (`title`, `text`, `imgURL`) VALUES ('$title', '$text', '$imgURL');";
+        $ok = DBUtils::uploadImage($img);
 
-        if($mysqli->query($query))
-            $result = true;
+        if($ok === true)
+        {
+            $imgURL = UPLOAD_DIR . basename($img['name']);
+
+            $mysqli = DBUtils::getConnection();
+            $query = "INSERT INTO Posts (`title`, `text`, `imgURL`) VALUES ('$title', '$text', '$imgURL');";
+
+            if($mysqli->query($query))
+                $result = true;
+            else
+                $result = '<h1 style="color:red">Ошибка запроса в БД</h1>';
+
+            $mysqli->close();
+            return $result;
+        }
         else
-            $result = false;
-
-        $mysqli->close();
-        return $result;
+            return $ok;
     }
 
-    public static function editPost($ID, $title, $text, $imgURL)
+    // $img -> $_FILES['img']
+    public static function editPost($ID, $title, $text, $img)
     {
+        // If image don't changed
+        if(gettype($img) == "string")
+        {
+            $query = "UPDATE Posts SET title='$title', text='$text', imgURL='$img' WHERE ID=$ID;";
+        }
+        // If image changed
+        else
+        {
+            $ok = DBUtils::uploadImage($img);
+
+            if($ok === true)
+            {
+                $imgURL = UPLOAD_DIR . basename($img['name']);
+                $query = "UPDATE Posts SET title='$title', text='$text', imgURL='$imgURL' WHERE ID=$ID;";
+            }
+            else
+            {
+                $result = $ok;
+                return $result;
+            }
+        }
+
         $mysqli = DBUtils::getConnection();
-        $query = "UPDATE Posts SET title='$title', text='$text', imgURL='$imgURL' WHERE ID=$ID;";
 
         if($mysqli->query($query))
             $result = true;
         else
-            $result = false;
+            $result = '<h1 style="color:red">Ошибка запроса в БД</h1>';
 
         $mysqli->close();
         return $result;
@@ -150,5 +183,27 @@ class DBUtils
 
         $mysqli->close();
         return $result;
+    }
+
+    // $img -> $_FILES['img']
+    private static function uploadImage($img)
+    {
+        $uploadFile = UPLOAD_DIR . basename($img['name']);
+        $isImage = getimagesize($img["tmp_name"]);
+
+        if($isImage !== false)
+        {
+            if(!file_exists($uploadFile))
+            {
+                if (move_uploaded_file($img['tmp_name'], $uploadFile))
+                    return true;
+                else
+                    return '<h1 style="color:red">Не удалось загрузить картинку</h1>';
+            }
+            else
+                return '<h1 style="color:red">Файл с таким именем уже загружен на сервер</h1>';
+        }
+        else
+            return '<h1 style="color:red">Файл не являеться картинкой</h1>';
     }
 }

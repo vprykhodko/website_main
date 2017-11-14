@@ -11,13 +11,20 @@
 <h1>Админ панель</h1>
 
 <div>
-    <form action="index.php" method="post" enctype="application/x-www-form-urlencoded">
+    <form class="form-holder" action="index.php" method="post" enctype="multipart/form-data">
         <label for="title">Title</label>
         <input type="text" id="title" name="title" value="<?= $post->getTitle() ?>" required>
 
-        <label for="imgURL">Image URL</label>
-        <input type="text" id="imgURL" name="imgURL" value="<?= $post->getImgURL() ?>" required>
 
+        <div class="img-block">
+            <label for="imgURL">Current image</label>
+            <input type="text" id="imgURL" name="imgURL" value="<?=$post->getImgURL()?>" readonly>
+            <img src="<?=$post->getImgURL()?>"/>
+
+            <!-- 10MB limit -->
+            <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+            <input type="file" id="img" name="img">
+        </div>
         <label for="text">Text</label>
         <textarea id="text" name="text" required><?= $post->getText() ?></textarea>
 

@@ -11,13 +11,21 @@ if(!empty($_POST))
 {
     if($_POST['action'] == 'add')
     {
-        DBUtils::addPost($_POST['title'], $_POST['text'], $_POST['imgURL']);
+        $status = DBUtils::addPost($_POST['title'], $_POST['text'], $_FILES['img']);
+
+        if($status !== true)
+            echo "$status";
     }
     else if($_POST['action'] == 'edit')
     {
-        DBUtils::editPost($_POST['data-id'], $_POST['title'], $_POST['text'], $_POST['imgURL']);
+        if($_FILES['img']['size'] === 0)
+            $status = DBUtils::editPost($_POST['data-id'], $_POST['title'], $_POST['text'], $_POST['imgURL']);
+        else
+            $status = DBUtils::editPost($_POST['data-id'], $_POST['title'], $_POST['text'], $_FILES['img']);
+
+        if($status !== true)
+            echo "$status";
     }
-    // TODO Delete with ajax
     else
     {
         DBUtils::deletePost($_POST['dataID']);
