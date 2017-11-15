@@ -110,7 +110,7 @@ class DBUtils
             if ($mysqli->query($query))
                 $result = true;
             else
-                $result = '<h1 style="color:red">Ошибка запроса в БД</h1>';
+                $result = '<h1 style="color:red">' . $mysqli->error . '</h1>';
 
             $mysqli->close();
             return $result;
@@ -146,7 +146,7 @@ class DBUtils
         if($mysqli->query($query))
             $result = true;
         else
-            $result = '<h1 style="color:red">Ошибка запроса в БД</h1>';
+            $result = '<h1 style="color:red">' . $mysqli->error . '</h1>';
 
         $mysqli->close();
         return $result;
