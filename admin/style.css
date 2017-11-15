@@ -55,7 +55,7 @@ input[type=submit]:hover {
     margin:0 auto;
 }
 
-.img-block>label {
+.img-block>label, button {
     display: block;
     width: 100%;
     text-align: center;
@@ -70,12 +70,6 @@ input[type=submit]:hover {
 
 .img-block>input[type=text] {
     font-size: 1em;
-}
-
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
 }
 
 textarea {
@@ -93,12 +87,4 @@ textarea {
 .delete-post {
     cursor: pointer;
     color: red;
-}
-
-a {
-    text-decoration: none;
-}
-
-a:visited {
-    color: blue;
 }

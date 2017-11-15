@@ -37,7 +37,7 @@
                 <h4 class="article-title"><?= $post->getTitle(); ?></h4>
 
                 <div class="article-body">
-                    <img class="article-image" src="admin/<?=$post->getImgURL()?>" alt="">
+                    <img class="article-image" src="data:image;base64,<?=$post->getImage();?>" alt="">
                     <div class="article-text-holder">
                         <span><?= $post->getText(); ?></span>
                     </div>
