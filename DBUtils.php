@@ -123,7 +123,7 @@ class DBUtils
     public static function editPost($ID, $title, $text, $img)
     {
         // If image don't changed
-        if(gettype($img) == "string")
+        if($img == null)
         {
             $query = "UPDATE Posts SET title='$title', text='$text' WHERE ID=$ID;";
         }
