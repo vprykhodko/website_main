@@ -7,23 +7,23 @@ class Post
     private $ID;
     private $title;
     private $text;
-    private $imgURL;
+    private $image;
     private $counter;
 
-    public function __construct($ID, $title, $text, $imgURL, $counter)
+    public function __construct($ID, $title, $text, $image, $counter)
     {
         $this->ID = $ID;
         $this->title = $title;
         $this->text = $text;
-        $this->imgURL = $imgURL;
+        $this->image = $image;
         $this->counter = $counter;
     }
 
-    public function constructWithoutID($title, $text, $imgURL, $counter)
+    public function constructWithoutID($title, $text, $image, $counter)
     {
         $this->title = $title;
         $this->text = $text;
-        $this->imgURL = $imgURL;
+        $this->image = $image;
         $this->counter = $counter;
     }
 
@@ -57,14 +57,14 @@ class Post
         $this->text = $text;
     }
 
-    public function getImgURL()
+    public function getImage()
     {
-        return $this->imgURL;
+        return $this->image;
     }
 
-    public function setImgURL($imgURL)
+    public function setImage($image)
     {
-        $this->imgURL = $imgURL;
+        $this->image = $image;
     }
 
     public function getCounter()

@@ -60,7 +60,7 @@
                         echo '<div id="collapse' . $i . '" class="panel-collapse collapse">';
                     ?>
                         <div class="panel-body">
-                            <img class="article-image" src="admin/<?=$posts[$i]->getImgURL()?>" alt="">
+                            <img class="article-image" src="data:image;base64,<?=$posts[$i]->getImage();?>" alt="">
                             <div class="article-text-holder">
                                 <span><?=$posts[$i]->getText()?></span>
                                 <a href="article.php?id=<?= $posts[$i]->getID(); ?>" class="article-more-link">Подробнее...</a>

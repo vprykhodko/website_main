@@ -4,6 +4,12 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
     <title>Админ панель</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -15,26 +21,70 @@
         <label for="title">Title</label>
         <input type="text" id="title" name="title" value="<?= $post->getTitle() ?>" required>
 
-
-        <div class="img-block">
-            <label for="imgURL">Current image</label>
-            <input type="text" id="imgURL" name="imgURL" value="<?=$post->getImgURL()?>" readonly>
-            <img src="<?=$post->getImgURL()?>"/>
-
+        <?php
+        if($post->getImage() !== '')
+        {
+            echo '<div class="img-block">
+                <label>Current image</label>
+                <h1 style="cursor: pointer; color: red;" id="delete-img" data-toggle="modal" data-target="#myModal">Удалить</h1>
+                <img width="50%" height="50%" src="data:image;base64,' . $post->getImage() . '">
+            </div>';
+        }
+        ?>
             <!-- 10MB limit -->
-            <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
-            <input type="file" id="img" name="img">
-        </div>
+        <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
+        <input type="file" id="img" name="img">
+
         <label for="text">Text</label>
         <textarea id="text" name="text" required><?= $post->getText() ?></textarea>
 
-        <input type="hidden" name="data-id" value="<?= $post->getID() ?>">
+        <input type="hidden" id="data-id" name="data-id" value="<?= $post->getID() ?>">
         <input type="hidden" name="action" value="edit">
 
         <input type="submit" value="Редактировать">
     </form>
 </div>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 100%; max-width: 250px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Удалить изображение?</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-yes">Yes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-no">No</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 </body>
 
 </html>
+
+<script>
+    $('#delete-img').on( "click", function() {
+        $('#modal-yes').attr("data-id", $('#data-id').val());
+    });
+
+    $('#modal-yes').on( "click", function() {
+        var data = {dataID: $(this).attr('data-id')};
+        $.ajax({
+            url: 'edit-post.php',
+            type: 'POST',
+            data: data,
+            error: function () {
+                console.log('err');
+            },
+            success: function (result) {
+                $('.img-block').remove();
+            }
+        });
+    });
+</script>
