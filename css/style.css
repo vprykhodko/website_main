@@ -278,7 +278,7 @@ h2 {
 .fourth-block {
     min-height: 100vh;
     background-color: #aaece4;
-    padding: 95px 0;
+    padding: 95px 0 30px 0;
 }
 .fourth-block .container-sm {
     max-width: 1090px;
@@ -286,8 +286,8 @@ h2 {
 .card-holder {
     position: relative;
     display: inline-block;
-    vertical-align: bottom;
-    height: 480px;
+    vertical-align: top;
+    height: 524px;
     width: 100%;
     max-width: 340px;
 }
@@ -298,7 +298,7 @@ h2 {
     background-size: cover;
 }
 .card-holder-2 {
-    height: 495px;
+    height: 470px;
     background-image: url(../img/card_2.svg);
     background-position: center;
     background-repeat: no-repeat;
@@ -312,18 +312,18 @@ h2 {
 }
 .card-header {
     position: absolute;
-    top: 108px;
-    left: 125px;
+    top: 104px;
+    left: 129px;
     text-align: center;
     font-size: 18px;
 }
 .card-holder-2 .card-header {
-    top: 122px;
-    left: 99px;
+    top: 101px;
+    left: 104px;
 }
 .card-holder-3 .card-header {
     left: 90px;
-    top: 110px;
+    top: 103px;
 }
 .card-info-holder {
     text-align: center;
@@ -1244,6 +1244,9 @@ textarea {
         display: block;
         margin: 20px auto;
     }
+    .card-holder-2 {
+        margin-top: -38px;
+    }
     .fourth-block .popup-delayed-2, .fourth-block .popup-delayed-4 {
         -webkit-transition-delay: 0s;
         -o-transition-delay: 0s;
@@ -1461,19 +1464,19 @@ textarea {
 }
 @media screen and (max-width: 330px) {
     .card-header {
-        left: 115px;
+        left: 126px;
     }
     .card-info-holder {
         left: 54px;
     }
     .card-holder-2 .card-header {
-        left: 87px;
+        left: 99px;
     }
     .card-holder-2 .card-info-holder {
         left: 42px;
     }
     .card-holder-3 .card-header {
-        left: 76px;
+        left: 84px;
     }
     .card-holder-3 .card-info-holder {
         left: 23px;
