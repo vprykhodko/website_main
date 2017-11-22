@@ -48,9 +48,15 @@
                             
                             <div class="select-wrapper">
                                 <div class="select form-group mar-bt-1">
-                                    <input type="text" id="name" name="name" x-autocompletetype="name" required placeholder="Ваше имя" class="form-control input-field">
+                                    <input type="text" id="phone" name="phone" pattern="[0-9+]+" minlength="13" maxlength="13" placeholder="+380" required="required" class="form-control input-field bfh-phone">
                                 </div>
                             </div>
+
+                            <script>
+                                $("#phone").on('click', function(){
+                                    $("#phone").val("+380");
+                                });
+                            </script>
 
                             <div class="select-wrapper">
                                 <div class="select form-group mar-bt-1">
@@ -213,8 +219,8 @@
                 <div class="col-md-4 col-sm-12 col-xs-12 relative">
                     <div class="btns-holder">
                         <button type="button" class="lg-btn white-btn mar-bt-4" data-toggle="modal" data-target="#myModal">Задать вопрос</button>
-                        <button type="button" class="lg-btn red-btn"><a href="#top" class="scroll">Зарегистрироваться</a>
-                    </button>
+                        <!--<button type="button" class="lg-btn red-btn"><a href="#top" class="scroll">Зарегистрироваться</a></button>-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -232,12 +238,6 @@
                     <form action="contactForm.php" method="post" id="contactModal" class="form">
                         <div class="select-wrapper">
                             <div class="select form-group mar-bt-1">
-                                <input type="text" id="nameM" name="nameM" x-autocompletetype="name" required placeholder="Ваше имя" class="form-control input-field">
-                            </div>
-                        </div>
-
-                        <div class="select-wrapper">
-                            <div class="select form-group mar-bt-1">
                                 <input type="text" id="phoneM" name="phoneM" pattern="[0-9+]+" minlength="13" maxlength="13" placeholder="+380" required="required" class="form-control input-field bfh-phone">
                             </div>
                         </div>
@@ -247,16 +247,18 @@
                                 $("#phoneM").val("+380");
                             });
                         </script>
-
-                        <div class="select-wrapper mar-bt-3">
-                            <textarea id="message" rows="5" name="message" placeholder="Ваше сообщение" required=""></textarea>
-                        </div>
                         
+                        <div class="select-wrapper">
+                            <div class="select form-group mar-bt-1">
+                                <input type="email" id="email" name="email" placeholder="e-mail" required="required" class="form-control input-field">
+                            </div>
+                        </div>
+
                         <input type="submit" class="lg-btn red-btn" value="Отправить">
                     </form>
                 </div>
             </div>
-      </div>
+        </div>
     </div>
 </body>
     
@@ -301,10 +303,26 @@
       evt.preventDefault();
       http.open("POST", "contactForm.php", true);
       http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      http.send("name=" + f.name.value + "&phone=" + f.phone.value + "&message=" + f.message.value);
+      http.send("phone=" + f.phone.value + "&email=" + f.email.value);
       http.onreadystatechange = function() {
         if (http.readyState == 4 && http.status == 200) {
-            alert(http.responseText + 'Ваше сообщение получено.\nНаши специалисты ответят Вам в течении часа.\nБлагодарим за интерес к нашим услугам');
+            alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
+        }
+      }
+      http.onerror = function() {
+        alert('Извините, данные не были переданы');
+      }
+    }, false);
+    
+    document.getElementById('contactModal').addEventListener('submit', function(evt){
+      var http = new XMLHttpRequest(), f = this;
+      evt.preventDefault();
+      http.open("POST", "contactForm.php", true);
+      http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      http.send("phone=" + f.phoneM.value + "&email=" + f.email.value);
+      http.onreadystatechange = function() {
+        if (http.readyState == 4 && http.status == 200) {
+            alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
         }
       }
       http.onerror = function() {

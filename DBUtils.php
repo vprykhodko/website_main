@@ -3,6 +3,7 @@
 namespace app;
 
 require_once("Post.php");
+require_once("Subscriber.php");
 require_once("config.php");
 
 use mysqli;
@@ -189,5 +190,40 @@ class DBUtils
 
         $mysqli->close();
         return $result;
+    }
+
+    public static function addSubscriber($name, $email, $phone, $message)
+    {
+        $mysqli = DBUtils::getConnection();
+        $query = "INSERT INTO newsletter (`name`, `email`, `phone`, `message`) VALUES ('$name', '$email', '$phone', '$message');";
+
+        if ($mysqli->query($query))
+            $result = true;
+        else
+            $result = 'Ошибка записи в базу данных!';
+
+        $mysqli->close();
+        return $result;
+    }
+
+    public static function getAllSubscribers()
+    {
+        $mysqli = DBUtils::getConnection();
+        $query = "SELECT * FROM newsletter";
+
+        $result = $mysqli->query($query);
+
+        if($result->num_rows == 0)
+        {
+            $mysqli->close();
+            return false;
+        }
+
+        $subscribers = [];
+        while($row = $result->fetch_assoc())
+            $subscribers[] = new Subscriber($row['ID'], $row['name'], $row['email'], $row['phone'], $row['message']);
+
+        $mysqli->close();
+        return $subscribers;
     }
 }
