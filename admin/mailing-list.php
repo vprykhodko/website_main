@@ -2,7 +2,7 @@
 
 namespace admin;
 
-require_once("../DBUtils.php");
+require_once("DBUtils.php");
 
 use app\DBUtils;
 

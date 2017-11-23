@@ -2,7 +2,7 @@
 
 namespace webinar;
 
-require_once("../DBUtils.php");
+require_once("../admin/DBUtils.php");
 
 use app\DBUtils;
 

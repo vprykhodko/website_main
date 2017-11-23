@@ -1,2 +1,6 @@
 .idea
-/admin/uploads
+img
+fonts
+admin/config.php
+admin/.htaccess
+admin/.htpasswd
