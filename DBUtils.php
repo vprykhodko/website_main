@@ -192,20 +192,6 @@ class DBUtils
         return $result;
     }
 
-    public static function addSubscriber($name, $email, $phone, $message)
-    {
-        $mysqli = DBUtils::getConnection();
-        $query = "INSERT INTO newsletter (`name`, `email`, `phone`, `message`) VALUES ('$name', '$email', '$phone', '$message');";
-
-        if ($mysqli->query($query))
-            $result = true;
-        else
-            $result = 'Ошибка записи в базу данных!';
-
-        $mysqli->close();
-        return $result;
-    }
-
     public static function getAllSubscribers()
     {
         $mysqli = DBUtils::getConnection();
@@ -225,5 +211,69 @@ class DBUtils
 
         $mysqli->close();
         return $subscribers;
+    }
+
+    public static function getSubscriber($id)
+    {
+        $mysqli = DBUtils::getConnection();
+        $query = "SELECT * FROM newsletter WHERE ID = $id";
+
+        $result = $mysqli->query($query);
+
+        if($result->num_rows == 0)
+        {
+            $mysqli->close();
+            return false;
+        }
+
+        $row = $result->fetch_assoc();
+        $subscriber = new Subscriber($row['ID'], $row['name'], $row['email'], $row['phone'], $row['message']);
+
+        $mysqli->close();
+        return $subscriber;
+    }
+
+    public static function addSubscriber($name, $email, $phone, $message)
+    {
+        $mysqli = DBUtils::getConnection();
+        $query = "INSERT INTO newsletter (`name`, `email`, `phone`, `message`) VALUES ('$name', '$email', '$phone', '$message');";
+
+        if ($mysqli->query($query))
+            $result = true;
+        else
+            $result = 'Ошибка записи в базу данных!';
+
+        $mysqli->close();
+        return $result;
+    }
+
+    public static function editSubscriber($id, $name, $email, $phone, $message)
+    {
+        $mysqli = DBUtils::getConnection();
+        $query = "UPDATE newsletter SET name = '$name', email = '$email', phone = '$phone', message = '$message' WHERE ID = $id;";
+        $mysqli->query($query);
+
+        if($mysqli->affected_rows !== 1)
+            $result = 'Не удалось отредактировать запись!';
+        else
+            $result = true;
+
+        $mysqli->close();
+        return $result;
+    }
+
+    public static function removeSubscriber($id)
+    {
+        $mysqli = DBUtils::getConnection();
+        $query = "DELETE FROM newsletter WHERE ID = $id;";
+        $mysqli->query($query);
+
+        if($mysqli->affected_rows !== 1)
+            $result = 'Не удалось удалить запись!';
+        else
+            $result = true;
+
+        $mysqli->close();
+        return $result;
     }
 }

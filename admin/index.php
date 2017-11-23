@@ -25,7 +25,7 @@ if(!empty($_POST))
         if($status !== true)
             echo "$status";
     }
-    else
+    else if($_POST['action'] == 'remove')
     {
         $result = DBUtils::deletePost($_POST['dataID']);
         echo $result;

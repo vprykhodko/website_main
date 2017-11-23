@@ -15,7 +15,7 @@
 
     <h1>Админ панель</h1>
     <h2><a href="add-post.html">Добавить</a></h2>
-    <h2><a href="newsletter.php">Рассылка</a></h2>
+    <h2><a href="mailing-list.php">Рассылка</a></h2>
 
     <table class="admin-table">
         <tr>
@@ -70,7 +70,7 @@
     });
 
     $('#modal-yes').on( "click", function() {
-        var data = {dataID: $(this).attr('data-id')};
+        var data = {dataID: $(this).attr('data-id'), action: 'remove'};
         $.ajax({
             url: 'index.php',
             type: 'POST',

@@ -1,8 +1,10 @@
 <?php
 
-namespace app;
+namespace admin;
 
 require_once("../DBUtils.php");
+
+use app\DBUtils;
 
 if(!empty($_POST))
 {
