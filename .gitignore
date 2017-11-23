@@ -1,6 +1,4 @@
 .idea
-img
-fonts
 admin/config.php
 admin/.htaccess
 admin/.htpasswd
