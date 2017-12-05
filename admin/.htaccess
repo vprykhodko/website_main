@@ -1,4 +1,4 @@
 AuthType Basic
 AuthName "Панель администратора"
-AuthUserFile /home/studioan/web-site.kiev.ua/www/admin/.htpasswd
+AuthUserFile /var/www/web-site.loc/admin/.htpasswd
 Require valid-user
