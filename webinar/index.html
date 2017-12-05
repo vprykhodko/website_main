@@ -250,7 +250,13 @@
                         
                         <div class="select-wrapper">
                             <div class="select form-group mar-bt-1">
-                                <input type="email" id="email" name="email" placeholder="e-mail" required="required" class="form-control input-field">
+                                <input type="email" id="email1" name="email1" placeholder="e-mail" required="required" class="form-control input-field">
+                            </div>
+                        </div>
+                        
+                        <div class="select-wrapper">
+                            <div class="select form-group mar-bt-1">
+                                <textarea id="msg" name="msg" placeholder="Задайте Ваш вопрос" rows="5" class="form-control input-field"></textarea>
                             </div>
                         </div>
 
@@ -319,7 +325,7 @@
       evt.preventDefault();
       http.open("POST", "contactForm.php", true);
       http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      http.send("phone=" + f.phoneM.value + "&email=" + f.email.value);
+      http.send("phone=" + f.phoneM.value + "&email=" + f.email1.value + "msg=" + f.msg.value);
       http.onreadystatechange = function() {
         if (http.readyState == 4 && http.status == 200) {
             alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
