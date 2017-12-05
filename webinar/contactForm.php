@@ -14,7 +14,7 @@ $response = 'Благодарим Вас за регистрацию. В ден�
 
 if(empty($_POST['msg']))
 {
-    mail('emma0975182407@gmail.com', 'Письмо с web-site.kiev.ua/webinar',
+    mail('astudio0711@gmail.com', 'Письмо с web-site.kiev.ua/webinar',
         'Его номер телефона: ' . $phone .
         '<br />Его e-mail: ' . $email ,
         "Content-type:text/html;charset=UTF-8");
@@ -28,7 +28,7 @@ else
 {
     $msg = trim(strip_tags($_POST['msg']));
     
-    mail('emma0975182407@gmail.com', 'Письмо с web-site.kiev.ua/webinar',
+    mail('astudio0711@gmail.com', 'Письмо с web-site.kiev.ua/webinar',
         'Его номер телефона: ' . $phone .
         '<br />Его e-mail: ' . $email .
         '<br />Сообщение - ' . $msg ,
