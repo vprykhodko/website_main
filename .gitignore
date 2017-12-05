@@ -1,1 +1,4 @@
 .idea
+admin/config.php
+admin/.htaccess
+admin/.htpasswd
