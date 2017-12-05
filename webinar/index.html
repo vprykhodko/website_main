@@ -325,7 +325,7 @@
       evt.preventDefault();
       http.open("POST", "contactForm.php", true);
       http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      http.send("phone=" + f.phoneM.value + "&email=" + f.email1.value + "msg=" + f.msg.value);
+      http.send("phone=" + f.phoneM.value + "&email=" + f.email1.value + "&msg=" + f.msg.value);
       http.onreadystatechange = function() {
         if (http.readyState == 4 && http.status == 200) {
             alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
