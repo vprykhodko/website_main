@@ -18,9 +18,26 @@
     <meta name="keywords" content="">
     <title>Astudio</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style_min.css" rel="stylesheet">
 
     <script src="js/jquery.js"></script>
     <script src="js/jquery.appear.js"></script>
@@ -28,6 +45,38 @@
 </head>
 
 <body>
+    <div class="ask-btn" onclick="showAsk();"></div>
+    
+    <div id="ask_popup" class="ask-hidden">
+        <h2>Задать вопрос</h2>
+        
+        <form action="contactForm.php" method="post" id="contactPopup" class="form">
+            <div class="select-wrapper">
+                <div class="select form-group mar-bt-2">
+                    <input type="text" id="nameP" name="name" x-autocompletetype="name" required placeholder="Ваше имя" class="form-control input-field">
+                </div>
+            </div>
+
+            <div class="select-wrapper">
+                <div class="select form-group mar-bt-2">
+                    <input type="text" id="phoneP" name="phone" pattern="[0-9+]+" minlength="13" maxlength="13" placeholder="+380" required="required" class="form-control input-field bfh-phone">
+                </div>
+            </div>
+
+            <script>
+                $("#phoneP").on('click', function(){
+                    $("#phoneP").val("+380");
+                });
+            </script>
+
+            <div class="select-wrapper mar-bt-2">
+                <textarea id="messageP" rows="5" name="message" placeholder="Ваше сообщение"></textarea>
+            </div>
+
+            <input type="submit" class="large-btn white-btn zero" value="Отправить">
+        </form>
+    </div>
+    
     <a href="#home" class="scroll up_link"><img src="img/up-arrow.svg" alt=""></a>
     
     <div id="home" class="main-block">
@@ -430,5 +479,41 @@
 </body>
     
 <script src="js/mine_min.js"></script>
+<script type="text/javascript">
+    document.getElementById('contactForm').addEventListener('submit', function(evt){
+      var http = new XMLHttpRequest(), f = this;
+      evt.preventDefault();
+      http.open("POST", "contactForm.php", true);
+      http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      http.send("name=" + f.name.value + "&phone=" + f.phone.value + "&message=" + f.message.value);
+      http.onreadystatechange = function() {
+        if (http.readyState == 4 && http.status == 200) {
+            alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
+        }
+      }
+      http.onerror = function() {
+        alert('Извините, данные не были переданы');
+      }
+    }, false);
     
+    document.getElementById('contactPopup').addEventListener('submit', function(evt){
+      var http = new XMLHttpRequest(), f = this;
+      evt.preventDefault();
+      http.open("POST", "contactForm.php", true);
+      http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      http.send("name=" + f.name.value + "&phone=" + f.phone.value + "&message=" + f.message.value);
+      http.onreadystatechange = function() {
+        if (http.readyState == 4 && http.status == 200) {
+            alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
+        }
+      }
+      http.onerror = function() {
+        alert('Извините, данные не были переданы');
+      }
+    }, false);
+</script>    
+    
+<script type="text/javascript">
+    $('.modal').modal('show');
+</script>
 </html>
