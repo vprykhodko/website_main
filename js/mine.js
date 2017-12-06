@@ -64,20 +64,19 @@ function showAsk() {
     if (nav.classList.contains('ask-hidden')) {
         nav.classList.remove('ask-hidden');
         nav.classList.add('ask-visible');
-    }
-    else {
+    } else {
         nav.classList.remove('ask-visible');
         nav.classList.add('ask-hidden');
     }
 }
+
 jQuery(function($){
     var nav = document.getElementById("ask_popup");
-	$(document).mouseup(function (e){
-		var div = $("#ask_popup");
-		if (!div.is(e.target)
-		    && div.has(e.target).length === 0) {
-			nav.classList.remove('ask-visible');
+    $('body').click(function (event) {
+        var el = $(event.target);
+        if(!el.hasClass('ask-btn')) {
+            nav.classList.remove('ask-visible');
             nav.classList.add('ask-hidden');
-		}
-	});
+        }
+    });
 });
