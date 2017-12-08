@@ -53,7 +53,7 @@
                             </div>
 
                             <script>
-                                $("#phone").on('click', function(){
+                                $("#phone").on('focus', function(){
                                     $("#phone").val("+380");
                                 });
                             </script>
@@ -238,25 +238,25 @@
                     <form action="contactForm.php" method="post" id="contactModal" class="form">
                         <div class="select-wrapper">
                             <div class="select form-group mar-bt-1">
-                                <input type="text" id="phoneM" name="phoneM" pattern="[0-9+]+" minlength="13" maxlength="13" placeholder="+380" required="required" class="form-control input-field bfh-phone">
+                                <input type="text" id="phoneModal" name="phone" pattern="[0-9+]+" minlength="13" maxlength="13" placeholder="+380" required="required" class="form-control input-field bfh-phone">
                             </div>
                         </div>
 
                         <script>
-                            $("#phoneM").on('click', function(){
+                            $("#phoneM").on('focus', function(){
                                 $("#phoneM").val("+380");
                             });
                         </script>
                         
                         <div class="select-wrapper">
                             <div class="select form-group mar-bt-1">
-                                <input type="email" id="email1" name="email1" placeholder="e-mail" required="required" class="form-control input-field">
+                                <input type="email" id="emailModal" name="email1" placeholder="e-mail" required="required" class="form-control input-field">
                             </div>
                         </div>
                         
                         <div class="select-wrapper">
                             <div class="select form-group mar-bt-1">
-                                <textarea id="msg" name="msg" placeholder="Задайте Ваш вопрос" rows="5" class="form-control input-field"></textarea>
+                                <textarea id="msgModal" name="msg" placeholder="Задайте Ваш вопрос" rows="5" class="form-control input-field"></textarea>
                             </div>
                         </div>
 
@@ -304,36 +304,48 @@
 </script>
     
 <script>
-    document.getElementById('contactForm').addEventListener('submit', function(evt){
-      var http = new XMLHttpRequest(), f = this;
-      evt.preventDefault();
-      http.open("POST", "contactForm.php", true);
-      http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      http.send("phone=" + f.phone.value + "&email=" + f.email.value);
-      http.onreadystatechange = function() {
-        if (http.readyState == 4 && http.status == 200) {
-            alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
-        }
-      }
-      http.onerror = function() {
-        alert('Извините, данные не были переданы');
-      }
-    }, false);
-    
-    document.getElementById('contactModal').addEventListener('submit', function(evt){
-      var http = new XMLHttpRequest(), f = this;
-      evt.preventDefault();
-      http.open("POST", "contactForm.php", true);
-      http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      http.send("phone=" + f.phoneM.value + "&email=" + f.email1.value + "&msg=" + f.msg.value);
-      http.onreadystatechange = function() {
-        if (http.readyState == 4 && http.status == 200) {
-            alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
-        }
-      }
-      http.onerror = function() {
-        alert('Извините, данные не были переданы');
-      }
-    }, false);
+
+    $("#contactForm").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var data = {
+            'email': $('#email').val(),
+            'phone': $('#phone').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: 'contactForm.php',
+            data: data,
+            error: function () {
+                alert('Извините, данные не были переданы');
+            },
+            success: function(data) {
+                alert(data + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам'); // show response from the php script.
+            }
+        });
+    });
+
+    $("#contactModal").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var data = {
+            'email': $('#emailModal').val(),
+            'phone': $('#phoneModal').val(),
+            'msg': $('#msgModal').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: 'contactForm.php',
+            data: data,
+            error: function () {
+                alert('Извините, данные не были переданы');
+            },
+            success: function(data) {
+                alert(data + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам'); // show response from the php script.
+            }
+        });
+    });
 </script>    
 </html>

@@ -11,7 +11,7 @@ $check = DBUtils::checkSubscriberEmail($email);
 
 if($check)
 {
-    $response = "Вы уже зарегистрированы на вебинар: \"Как начать свое дело\".\n
+    $response = "Вы уже зарегистрированы на вебинар: \"Как начать свое дело\".<br>
     Свои вопросы можете писать на нашу почту: astudio0711@gmail.com";
 
     mail($email, 'Регистрация на вебинар web-site.kiev.ua/webinar',
