@@ -76,11 +76,16 @@ jQuery(function($){
         var el = $(event.target);
 
         var result = false;
-        el.parents().each(function( index ) {
-            if($( this ).is('#ask_popup')){
-                result = true;
-            }
-        });
+
+        if(el.is('#ask_popup')){
+            result = true;
+        } else {
+            el.parents().each(function( index ) {
+                if($( this ).is('#ask_popup')){
+                    result = true;
+                }
+            });
+        }
 
         if(!result && !el.hasClass('ask-btn')){
             nav.classList.remove('ask-visible');
