@@ -72,13 +72,13 @@
         <form action="contactForm.php" method="post" id="contactPopup" class="form">
             <div class="select-wrapper">
                 <div class="select form-group mar-bt-2">
-                    <input type="text" id="nameP" name="name" x-autocompletetype="name" required placeholder="Ваше имя" class="form-control input-field">
+                    <input type="text" id="namePopup" name="name" x-autocompletetype="name" required placeholder="Ваше имя" class="form-control input-field">
                 </div>
             </div>
 
             <div class="select-wrapper">
                 <div class="select form-group mar-bt-2">
-                    <input type="text" id="phoneP" name="phone" pattern="[0-9+]+" minlength="13" maxlength="13" placeholder="+380" required="required" class="form-control input-field bfh-phone">
+                    <input type="text" id="phonePopup" name="phone" pattern="[0-9+]+" minlength="13" maxlength="13" placeholder="+380" required="required" class="form-control input-field bfh-phone">
                 </div>
             </div>
 
@@ -89,7 +89,7 @@
             </script>
 
             <div class="select-wrapper mar-bt-2">
-                <textarea id="messageP" rows="5" name="message" placeholder="Ваше сообщение"></textarea>
+                <textarea id="messagePopup" rows="5" name="message" placeholder="Ваше сообщение"></textarea>
             </div>
 
             <input type="submit" class="large-btn white-btn zero" value="Отправить">
@@ -499,36 +499,48 @@
     
 <script src="js/mine_min.js"></script>
 <script type="text/javascript">
-    document.getElementById('contactForm').addEventListener('submit', function(evt){
-      var http = new XMLHttpRequest(), f = this;
-      evt.preventDefault();
-      http.open("POST", "contactForm.php", true);
-      http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      http.send("name=" + f.name.value + "&phone=" + f.phone.value + "&message=" + f.message.value);
-      http.onreadystatechange = function() {
-        if (http.readyState == 4 && http.status == 200) {
-            alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
-        }
-      }
-      http.onerror = function() {
-        alert('Извините, данные не были переданы');
-      }
-    }, false);
-    
-    document.getElementById('contactPopup').addEventListener('submit', function(evt){
-      var http = new XMLHttpRequest(), f = this;
-      evt.preventDefault();
-      http.open("POST", "contactForm.php", true);
-      http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      http.send("name=" + f.name.value + "&phone=" + f.phone.value + "&message=" + f.message.value);
-      http.onreadystatechange = function() {
-        if (http.readyState == 4 && http.status == 200) {
-            alert(http.responseText + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам');
-        }
-      }
-      http.onerror = function() {
-        alert('Извините, данные не были переданы');
-      }
-    }, false);
+    $("#contactPopup").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var data = {
+            'name': $('#namePopup').val(),
+            'phone': $('#phonePopup').val(),
+            'message': $('#messagePopup').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: 'contactForm.php',
+            data: data,
+            error: function () {
+                alert('Извините, данные не были переданы');
+            },
+            success: function(data) {
+                alert(data + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам'); // show response from the php script.
+            }
+        });
+    });
+
+    $("#contactForm").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var data = {
+            'name': $('#name').val(),
+            'phone': $('#phone').val(),
+            'message': $('#message').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: 'contactForm.php',
+            data: data,
+            error: function () {
+                alert('Извините, данные не были переданы');
+            },
+            success: function(data) {
+                alert(data + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам'); // show response from the php script.
+            }
+        });
+    });
 </script>
 </html>
