@@ -74,7 +74,15 @@ jQuery(function($){
     var nav = document.getElementById("ask_popup");
     $('body').click(function (event) {
         var el = $(event.target);
-        if(!el.hasClass('ask-btn')) {
+
+        var result = false;
+        el.parents().each(function( index ) {
+            if($( this ).is('#ask_popup')){
+                result = true;
+            }
+        });
+
+        if(!result && !el.hasClass('ask-btn')){
             nav.classList.remove('ask-visible');
             nav.classList.add('ask-hidden');
         }
