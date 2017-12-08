@@ -6,36 +6,44 @@ require_once("../admin/DBUtils.php");
 
 use app\DBUtils;
 
-$phone = trim(strip_tags($_POST['phone']));
 $email = trim(strip_tags($_POST['email']));
-$response = 'Благодарим Вас за регистрацию. В день вебинара мы отправим вам ссылку, а пока вы можете <a href="http://www.web-site.kiev.ua/webinar">задать нам вопрос</a> 
+$check = DBUtils::checkSubscriberEmail($email);
+
+if($check)
+{
+    $subscriber = DBUtils::getSubscriberByEmail($email);
+    $msg = "Вы уже зарегистрированы на вебинар как начать свое дело.\n
+    Свои вопросы можете писать на нашу почту: astudio0711@gmail.com";
+}
+else {
+
+    $phone = trim(strip_tags($_POST['phone']));
+    $response = 'Благодарим Вас за регистрацию. В день вебинара мы отправим вам ссылку, а пока вы можете <a href="http://www.web-site.kiev.ua/webinar">задать нам вопрос</a> 
 Среди всех, кто задал вопрос мы разыграем призы во время вебинара! Попытайте свою удачу ! До встречи 16.12. В 19:00 
 С уважением команда <a href="http://www.web-site.kiev.ua/">Astudio</a>';
 
-if(empty($_POST['msg']))
-{
-    mail('astudio0711@gmail.com', 'Письмо с web-site.kiev.ua/webinar',
-        'Его номер телефона: ' . $phone .
-        '<br />Его e-mail: ' . $email ,
-        "Content-type:text/html;charset=UTF-8");
+    if (empty($_POST['msg'])) {
+        mail('astudio0711@gmail.com', 'Письмо с web-site.kiev.ua/webinar',
+            'Его номер телефона: ' . $phone .
+            '<br />Его e-mail: ' . $email,
+            "Content-type:text/html;charset=UTF-8");
 
-    mail($email, 'Регистрация на вебинар web-site.kiev.ua/webinar',
-        $response,"Content-type:text/html;charset=UTF-8");
+        mail($email, 'Регистрация на вебинар web-site.kiev.ua/webinar',
+            $response, "Content-type:text/html;charset=UTF-8");
 
-    DBUtils::addSubscriber('', $email, $phone, '');
-}
-else
-{
-    $msg = trim(strip_tags($_POST['msg']));
-    
-    mail('astudio0711@gmail.com', 'Письмо с web-site.kiev.ua/webinar',
-        'Его номер телефона: ' . $phone .
-        '<br />Его e-mail: ' . $email .
-        '<br />Сообщение - ' . $msg ,
-        "Content-type:text/html;charset=UTF-8");
+        DBUtils::addSubscriber('', $email, $phone, '');
+    } else {
+        $msg = trim(strip_tags($_POST['msg']));
 
-    mail($email, 'Регистрация на вебинар web-site.kiev.ua/webinar',
-        $response,"Content-type:text/html;charset=UTF-8");
+        mail('astudio0711@gmail.com', 'Письмо с web-site.kiev.ua/webinar',
+            'Его номер телефона: ' . $phone .
+            '<br />Его e-mail: ' . $email .
+            '<br />Сообщение - ' . $msg,
+            "Content-type:text/html;charset=UTF-8");
 
-    DBUtils::addSubscriber('', $email, $phone, $msg);
+        mail($email, 'Регистрация на вебинар web-site.kiev.ua/webinar',
+            $response, "Content-type:text/html;charset=UTF-8");
+
+        DBUtils::addSubscriber('', $email, $phone, $msg);
+    }
 }

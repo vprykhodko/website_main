@@ -233,6 +233,26 @@ class DBUtils
         return $subscriber;
     }
 
+    public static function getSubscriberByEmail($email)
+    {
+        $mysqli = DBUtils::getConnection();
+        $query = "SELECT * FROM newsletter WHERE email = '$email'";
+
+        $result = $mysqli->query($query);
+
+        if($result->num_rows == 0)
+        {
+            $mysqli->close();
+            return false;
+        }
+
+        $row = $result->fetch_assoc();
+        $subscriber = new Subscriber($row['ID'], $row['name'], $row['email'], $row['phone'], $row['message']);
+
+        $mysqli->close();
+        return $subscriber;
+    }
+
     public static function addSubscriber($name, $email, $phone, $message)
     {
         $mysqli = DBUtils::getConnection();
@@ -275,5 +295,20 @@ class DBUtils
 
         $mysqli->close();
         return $result;
+    }
+
+    public static function checkSubscriberEmail($email)
+    {
+        $mysqli = DBUtils::getConnection();
+        $query = "SELECT email FROM newsletter WHERE email = '$email'";
+        $result = $mysqli->query($query);
+
+        if($result->num_rows == 0)
+            $res = false;
+        else
+            $res = true;
+
+        $mysqli->close();
+        return $res;
     }
 }
