@@ -44,7 +44,7 @@ a, a:hover, a:focus {
 .up_link {
     position: fixed;
     bottom: 30px;
-    right: 14px;
+    right: 9px;
     z-index: 999;
 }
 .up_link>img {
@@ -97,7 +97,7 @@ a, a:hover, a:focus {
     width: 100%;
     max-width: 290px;
     position: fixed;
-    bottom: 30px;
+    bottom: 21px;
     left: 50%;
     margin-left: -145px;
     z-index: 99;
