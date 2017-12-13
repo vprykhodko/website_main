@@ -243,6 +243,11 @@ h2 {
     font-size: 38px;
     margin: 0;
 }
+.green-header {
+    background-color: #a5e1da;
+    padding: 50px 0;
+    text-align: center;
+}
 .screens-image {
     display: inline-block;
     vertical-align: middle;
@@ -954,6 +959,56 @@ textarea {
     100% {-webkit-transform: scale(1.1, 1.1); opacity: 0.0;}
 }
 
+.portfolio-block {
+    background-color: #737373;
+}
+#porfolioCarousel {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0px 60px;
+}
+#porfolioCarousel .carousel-inner {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+#porfolioCarousel .carousel .item {
+    width: 100%;
+}
+#porfolioCarousel.carousel .item .item-content {
+    width: 49%;
+    display: inline-block;
+}
+#porfolioCarousel .carousel-inner .active.left { left: -50%; }
+#porfolioCarousel.carousel-inner .next        { left:  50%; }
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+}
+.carousel-control {
+    top: 50%;
+    margin-top: -58px;
+    width: 40px;
+    opacity: 1;
+}
+.item-content>a {
+    display: block;
+    width: 100%;
+    max-width: 310px;
+    margin: 0px auto 30px auto;
+}
+#porfolioCarouselM {
+    display: none;
+}
+#porfolioCarouselM .carousel-control {
+    margin-top: -35px;
+}
+#porfolioCarouselM .carousel-control>img {
+    height: 70px;
+}
+
+
 
 /* Appear animation */
 .popup-up {
@@ -1129,13 +1184,13 @@ textarea {
 /* Appear animation */
 
 /* Carousel fade animation */
-.carousel-inner > .item {
+.carousel-fade .carousel-inner > .item {
     -webkit-transition: 0.2s ease-in-out left;
     -moz-transition: 0.2s ease-in-out left;
     -o-transition: 0.2s ease-in-out left;
     transition: 0.2s ease-in-out left;
 }
-.carousel-inner .item {
+.carousel-fade .carousel-inner .item {
     transition-property: opacity;
 }
 .item, .active.left, .active.right {
@@ -1539,6 +1594,12 @@ textarea {
         width: 100%;
         max-width: 510px;
         margin: 0 auto;
+    }
+    #porfolioCarousel {
+        display: none;
+    }
+    #porfolioCarouselM {
+        display: block;
     }
 }
 @media screen and (max-width: 760px) {

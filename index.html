@@ -328,6 +328,70 @@
         </div>
     </div>
     
+    <div class="portfolio-block">
+        <h2 class="green-header">Наше портфолио</h2>
+        
+        <div id="porfolioCarousel" class="carousel carousel-fade slide" data-ride="carousel" data-type="multi" data-interval="5500">
+            <div class="carousel-inner">
+                <div class="item space-btw active">
+                    <div class="img-responsive item-content">
+                        <img src="img/portfolio_1.png" alt="" width="100%">
+                        <a href="http://emmamelnik.com/index-body.html" target="_blank" class="btn-portfolio"><img src="img/button_portfolio.png" alt="" width="100%"></a>
+                    </div>
+                </div>
+                <div class="item space-btw">
+                    <div class="img-responsive item-content">
+                        <img src="img/portfolio_2.png" alt="" width="100%">
+                        <a href="http://emmamelnik.com/" target="_blank" class="btn-portfolio"><img src="img/button_portfolio.png" alt="" width="100%"></a>
+                    </div>
+                </div>
+                <div class="item space-btw">
+                    <div class="img-responsive item-content">
+                        <img src="img/portfolio_3.png" alt="" width="100%">
+                        <a href="http://studio-angels.com/" target="_blank" class="btn-portfolio"><img src="img/button_portfolio.png" alt="" width="100%"></a>
+                    </div>
+                </div>
+            </div>
+
+            <a class="left carousel-control" href="#porfolioCarousel" data-slide="prev">
+                <img src="img/left.png" alt="" width="100%">
+            </a>
+            <a class="right carousel-control" href="#porfolioCarousel" data-slide="next">
+                <img src="img/right.png" alt="" width="100%">
+            </a>
+        </div>
+        
+        <div id="porfolioCarouselM" class="carousel slide" data-ride="carousel" data-interval="5500">
+            <div class="carousel-inner">
+                <div class="item space-btw active">
+                    <div class="img-responsive item-content">
+                        <img src="img/portfolio_1.png" alt="" width="100%">
+                        <a href="http://emmamelnik.com/index-body.html" target="_blank" class="btn-portfolio"><img src="img/button_portfolio.png" alt="" width="100%"></a>
+                    </div>
+                </div>
+                <div class="item space-btw">
+                    <div class="img-responsive item-content">
+                        <img src="img/portfolio_2.png" alt="" width="100%">
+                        <a href="http://emmamelnik.com/" target="_blank" class="btn-portfolio"><img src="img/button_portfolio.png" alt="" width="100%"></a>
+                    </div>
+                </div>
+                <div class="item space-btw">
+                    <div class="img-responsive item-content">
+                        <img src="img/portfolio_3.png" alt="" width="100%">
+                        <a href="http://studio-angels.com/" target="_blank" class="btn-portfolio"><img src="img/button_portfolio.png" alt="" width="100%"></a>
+                    </div>
+                </div>
+            </div>
+
+            <a class="left carousel-control" href="#porfolioCarouselM" data-slide="prev">
+                <img src="img/left.png" alt="" height="100%">
+            </a>
+            <a class="right carousel-control" href="#porfolioCarouselM" data-slide="next">
+                <img src="img/right.png" alt="" height="100%">
+            </a>
+        </div>
+    </div>
+    
     <div class="fourth-block">
         <div class="container-sm space-btw">
             <div class="card-holder card-holder-1 popup-right">
@@ -546,6 +610,16 @@
                 alert(data + 'Ваше сообщение получено.\nБлагодарим за интерес к нашим услугам'); // show response from the php script.
             }
         });
+    });
+</script>
+    
+<script>
+    $('#porfolioCarousel .item').each(function(){
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.find('.item-content:first-child').clone().appendTo($(this));
     });
 </script>
 </html>
