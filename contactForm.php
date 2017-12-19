@@ -101,7 +101,7 @@ mail('astudio@web-site.kiev.ua', 'Письмо с web-site.kiev.ua',
 
             <div id="toggle_nav" onclick="showNav();"><img src="img/menu-button.svg" alt=""></div>
         </ul>
-        <div align="center" style="color: white; padding-top: 5em">
+        <div align="center" style="color: white; padding-top: 12em">
             <h2>Спасибо, что оставили заявку!</h2>
             <h3>Мы с Вами свяжемся, как только появится свободный менеджер.</h3>
         </div>
