@@ -71,6 +71,11 @@ mail('astudio@web-site.kiev.ua', 'Письмо с web-site.kiev.ua',
         fbq('init', '318667258631947');
         fbq('track', 'PageView');
     </script>
+    <noscript>
+        <img height="1" width="1"
+             src="https://www.facebook.com/tr?id=318667258631947&ev=PageView
+&noscript=1"/>
+    </noscript>
     <!-- End Facebook Pixel Code -->
 
 </head>
