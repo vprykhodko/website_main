@@ -26,6 +26,13 @@ DBUtils::increaseCounter($post->getID(), $post->getCounter());
     <script src="js/jquery.js"></script>
     <script src="js/jquery.appear.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!-- Facebook Pixel Code -->
+    <noscript>
+        <img height="1" width="1"
+             src="https://www.facebook.com/tr?id=318667258631947&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 
 <body>
