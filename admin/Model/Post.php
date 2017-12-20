@@ -21,10 +21,7 @@ class Post
 
     public function constructWithoutID($title, $text, $image, $counter)
     {
-        $this->title = $title;
-        $this->text = $text;
-        $this->image = $image;
-        $this->counter = $counter;
+        return new Post(0, $title, $text, $image, $counter);
     }
 
     public function getID()

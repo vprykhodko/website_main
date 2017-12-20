@@ -30,6 +30,8 @@ if(!DBUtils::checkUser())
 
     <link href="res/css/bootstrap.min.css" rel="stylesheet">
     <link href="res/css/style.css" rel="stylesheet">
+
+    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
 </head>
 
 <body>
@@ -40,21 +42,25 @@ if(!DBUtils::checkUser())
                 <h2 class="header-float-top"><a href="index.php">Админ панель</a></h2>
 
                 <div class="form-holder">
-                    <form action="mailing-list.php" method="post" id="insideForm" class="form">
+                    <form action="index.php" method="post" id="insideForm" class="form" enctype="multipart/form-data">
                         <div class="select-wrapper">
                             <div class="select form-group mar-tp-1 mar-bt-2">
-                                <input type="text" name="name" required placeholder="Имя" class="form-control input-field">
-                            </div>
-                            <div class="select form-group mar-tp-1 mar-bt-2">
-                                <input type="text" name="email" required placeholder="Email" class="form-control input-field">
-                            </div>
-                            <div class="select form-group mar-tp-1 mar-bt-2">
-                                <input type="text" name="phone" required placeholder="Телефон" class="form-control input-field">
-                            </div>
-                            <div class="select form-group mar-tp-1 mar-bt-2">
-                                <input type="text" name="message" required placeholder="Сообщение" class="form-control input-field">
+                                <input type="text" name="title" required placeholder="Заголовок" class="form-control input-field">
                             </div>
                         </div>
+                        <div class="select-wrapper image-upload-form">
+                            <div class="select form-group upload-holder">
+                                <div class="upload-fictive"><span>Choose a file</span></div>
+                                <!-- 5MB limit -->
+                                <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+                                <input type="file" name="img" class="form-control upload-file">
+                                <span class="not-found-label">File is not found</span>
+                            </div>
+                        </div>
+                        <div class="select-wrapper mar-bt-1">
+                            <textarea id="text" rows="7" name="text" placeholder="Текст" class="textarea-field"></textarea>
+                        </div>
+
                         <input type="hidden" name="action" value="add">
                         <input type="submit" value="Создать">
                     </form>
@@ -65,3 +71,7 @@ if(!DBUtils::checkUser())
 </div>
 </body>
 </html>
+
+<script>
+    CKEDITOR.replace( 'text' );
+</script>
