@@ -43,7 +43,7 @@
 
                         <div class="form-action-holder" align="left">
                             <div class="remember-checkbox">
-                                <input type="checkbox" id="remember" class="ui-checkbox" value="remember">
+                                <input type="checkbox" name="remember" id="remember" class="ui-checkbox">
                                 <label for="remember">Запомнить</label>
                             </div>
                             <div class="login-btn-holder" align="right">
@@ -52,7 +52,10 @@
                         </div>
 
                         <div class="bottom-links">
-                            <a href="registration.php">Регистрация</a>
+                            <?php
+                                if(\app\DBUtils::getUsersCount() == 0)
+                                    echo '<a href="registration.php">Регистрация</a>';
+                            ?>
                             <a href="password-recovery.php">Забыли пароль</a>
                         </div>
                     </form>

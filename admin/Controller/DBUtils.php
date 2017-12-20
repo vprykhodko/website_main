@@ -543,8 +543,8 @@ class DBUtils
             {
                 // 10 days
                 $time = time() + 864000;
-                setcookie('blog-login', $login, $time);
-                setcookie('blog-password', $password, $time);
+                setcookie('blog-login', $login, $time, '/admin');
+                setcookie('blog-password', $password, $time, '/admin');
             }
 
             $session = md5(microtime());
@@ -624,7 +624,7 @@ class DBUtils
         }
         elseif(!empty($_COOKIE['blog-login']) && !empty($_COOKIE['blog-password']))
         {
-            $login = $_COOKIE['blog-login'];
+            $login = urldecode($_COOKIE['blog-login']);
             $password = $_COOKIE['blog-password'];
 
             $mysqli = DBUtils::getConnection();
@@ -683,6 +683,13 @@ class DBUtils
             $result = false;
 
         return $result;
+    }
+
+    public static function getUsersCount()
+    {
+        $mysqli = DBUtils::getConnection();
+        $res = $mysqli->query("SELECT COUNT(ID) FROM `users`");
+        return $res->fetch_assoc()['COUNT(ID)'];
     }
 
     public static function recoverPassword($login)
