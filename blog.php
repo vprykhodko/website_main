@@ -2,7 +2,7 @@
 
 namespace app;
 
-require_once("admin/DBUtils.php");
+require_once("admin/Controller/DBUtils.php");
 
 $posts = DBUtils::getAllPostsSortedByCounter();
 

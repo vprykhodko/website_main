@@ -2,12 +2,12 @@
 
 namespace webinar;
 
-require_once("../admin/DBUtils.php");
+require_once("../admin/Controller/SpecialUtils.php");
 
-use app\DBUtils;
+use app\SpecialUtils;
 
 $email = trim(strip_tags($_POST['email']));
-$check = DBUtils::checkSubscriberEmail($email);
+$check = SpecialUtils::checkSubscriberEmail($email);
 
 if($check)
 {
@@ -35,7 +35,7 @@ else
         mail($email, 'Регистрация на вебинар web-site.kiev.ua/webinar',
             $response, "Content-type:text/html;charset=UTF-8");
 
-        DBUtils::addSubscriber('', $email, $phone, '');
+        SpecialUtils::addSubscriber('', $email, $phone, '');
     }
     else
     {
@@ -50,6 +50,6 @@ else
         mail($email, 'Регистрация на вебинар web-site.kiev.ua/webinar',
             $response, "Content-type:text/html;charset=UTF-8");
 
-        DBUtils::addSubscriber('', $email, $phone, $msg);
+        SpecialUtils::addSubscriber('', $email, $phone, $msg);
     }
 }
