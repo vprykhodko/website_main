@@ -33,6 +33,13 @@ $(function() {
 
     $('.popup-right').appear({force_process: true});
 });
+$(function() {
+    $(document.body).on('appear', '.card-holder-3', function(e, $affected) {
+        $(this).addClass("appeared");
+    });
+
+    $('.card-holder-3').appear({force_process: true});
+});
 
 $(document).ready(function() {
     $(".scroll").click(function() {
