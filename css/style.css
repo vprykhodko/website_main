@@ -270,7 +270,7 @@ h2 {
 }
 .screens-image>img {
     width: 100%;
-    max-width: 390px;
+    max-width: 515px;
 }
 .offers-list {
     display: inline-block;
@@ -1883,6 +1883,22 @@ textarea {
     .pack-description .container-sm>* {
         display: block;
         margin: 20px auto;
+    }
+    .screens-image {
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+    }
+    .offers-list {
+        width: 100%;
+        padding-left: 0;
+    }
+    .offers-list>li {
+        width: 100%;
+        max-width: 322px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 10px auto;
     }
 }
 @media screen and (max-width: 815px) {
