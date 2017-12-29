@@ -1260,6 +1260,19 @@ textarea {
     font-weight: 400;
     text-align: left;
 }
+.pack-price-card a {
+    font-style: italic;
+    color: #a9e1d9;
+}
+.pack-price-card a:hover {
+    -webkit-transition: all 550ms ease;
+    -moz-transition: all 550ms ease;
+    -o-transition: all 550ms ease;
+    transition: all 550ms ease;
+    
+    color: #5f8f98;
+    text-decoration: underline;
+}
 .pack-price-img {
     width: 96px;
     height: 96px;
