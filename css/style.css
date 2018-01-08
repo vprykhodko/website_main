@@ -444,14 +444,14 @@ h2 {
     cursor: pointer;
     height: 120px;
 }
-.point-holder .image-holder svg:hover path {
+/*.point-holder .image-holder svg:hover path {
     -webkit-transition: ease 0.4s;
     -moz-transition: ease 0.4s;
     -o-transition: ease 0.4s;
     transition: ease 0.4s;
     
     fill: #aaece4;
-}
+}*/
 .fourth-block {
     min-height: 100vh;
     background-color: #aaece4;
@@ -1259,6 +1259,19 @@ textarea {
     font-size: 20px;
     font-weight: 400;
     text-align: left;
+}
+.pack-price-card a {
+    font-style: italic;
+    color: #a9e1d9;
+}
+.pack-price-card a:hover {
+    -webkit-transition: all 550ms ease;
+    -moz-transition: all 550ms ease;
+    -o-transition: all 550ms ease;
+    transition: all 550ms ease;
+    
+    color: #5f8f98;
+    text-decoration: underline;
 }
 .pack-price-img {
     width: 96px;
