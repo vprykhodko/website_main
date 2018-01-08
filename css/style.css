@@ -86,7 +86,7 @@ a, a:hover, a:focus {
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
     
-    bottom: -410px;
+    bottom: -470px;
 }
 .ask-visible {
     -webkit-transition: all 400ms ease-out;
@@ -1079,7 +1079,7 @@ textarea {
     background:#dcf48a;
     -webkit-animation: pulsating 2s ease-in-out;
     -webkit-animation-iteration-count: infinite; 
-    opacity:0.0
+    opacity:0.0;
     z-index:5;
 }
 .ringbase {

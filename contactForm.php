@@ -2,13 +2,14 @@
 
 $name = trim(strip_tags($_POST['name']));
 $phone = trim(strip_tags($_POST['phone']));
+$email = trim(strip_tags($_POST['email']));
 $message = trim(strip_tags($_POST['message']));
 
 mail('astudio0711@gmail.com', 'Письмо с web-site.kiev.ua',
-    'Вам написал: '.$name.'<br />Его номер: '.$phone.'<br />Его сообщение: '.$message,"Content-type:text/html;charset=UTF-8");
+    'Вам написал: '.$name.'<br />Его номер: '.$phone.'<br />Его Email: '.$email.'<br />Его сообщение: '.$message,"Content-type:text/html;charset=UTF-8");
 
 mail('astudio@web-site.kiev.ua', 'Письмо с web-site.kiev.ua',
-    'Вам написал: '.$name.'<br />Его номер: '.$phone.'<br />Его сообщение: '.$message,"Content-type:text/html;charset=UTF-8");
+    'Вам написал: '.$name.'<br />Его номер: '.$phone.'<br />Его Email: '.$email.'<br />Его сообщение: '.$message,"Content-type:text/html;charset=UTF-8");
 ?>
 
 <!DOCTYPE html>
