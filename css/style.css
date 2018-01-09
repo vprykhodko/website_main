@@ -1859,6 +1859,18 @@ textarea {
         margin-right: -700px;
     }
 }
+@media screen and (max-width: 1071px) {
+    .team-block {
+        background-repeat: repeat-y;
+    }
+    .member-card {
+        width: 100%;
+        max-width: 320px;
+        margin: 20px auto;
+        padding-top: 0;
+        display: block;
+    }
+}
 @media screen and (max-width: 1050px) {
     .card-holder {
         display: block;
