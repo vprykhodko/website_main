@@ -1,4 +1,12 @@
 @font-face {
+    font-family: "GAGALIN";
+    src: url("../fonts/GAGALIN-REGULAR.OTF");
+}
+@font-face {
+    font-family: "RUSTS";
+    src: url("../fonts/ZINGSCRIPTRUSTSBDEMO-BASE.OTF");
+}
+@font-face {
     font-family: "Gothic";
     src: url("../fonts/GOTHIC.TTF");
 }
@@ -12,7 +20,7 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-family: "RUSTS", CenturyGothic, AppleGothic, sans-serif;
     font-size: 14px;
     font-weight: 400;
 }
@@ -74,8 +82,9 @@ a, a:hover, a:focus {
     color: #6c6c6c;
 }
 #ask_popup h2 {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
     font-size: 22px;
-    font-size: 700;
+    font-weight: 700;
     text-align: center;
     margin-bottom: 20px;
     color: #fff;
@@ -138,6 +147,7 @@ a, a:hover, a:focus {
     color: #fff;
     font-weight: 400;
     margin-top: 30px;
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
 }
 .nav-right>* {
     height: 30px;
@@ -188,6 +198,7 @@ a, a:hover, a:focus {
     margin: 10px 0;
 }
 h1 {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
     width: 316px;
     text-align: center;
     font-size: 22px;
@@ -244,8 +255,10 @@ h1 {
     background-color: #fff;
     padding: 50px 0;
     color: #000;
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
 }
 .green-header {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
     text-align: center;
     background-color: #aaece4;
     padding: 50px 0;
@@ -291,9 +304,13 @@ h2 {
     margin-right: 17px;
 }
 .tranparent-btn-holder {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
     width: 100%;
     text-align: center;
     margin-top: 30px;
+}
+.panel-title>a>span {
+    font-size: 18px;
 }
 .tranparent-btn {
     background-color: transparent;
@@ -353,13 +370,13 @@ h2 {
 .border-quotes-dark {
     border: 1px solid #487f77;
     position: relative;
-    min-height: 440px;
+    min-height: 462px;
     z-index: 9;
 }
 .border-quotes-middle {
     border: 1px solid #49d2c1;
     position: relative;
-    min-height: 120px;
+    min-height: 143px;
     z-index: 9;
 }
 .border-quotes-light {
@@ -384,6 +401,7 @@ h2 {
     display: block;
     padding: 10px;
     text-align: left;
+    padding-bottom: 20px;
 }
 .quote-holder {
     position: absolute;
@@ -432,6 +450,7 @@ h2 {
     color: #fff;
 }
 .card-more-holder {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
     text-align: center;
     font-size: 22px;
     font-weight: 700;
@@ -540,6 +559,7 @@ h2 {
 
 
 .card-header {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
     position: absolute;
     top: 104px;
     left: 147px;
@@ -582,6 +602,7 @@ h2 {
     text-align: justify!important;
 }
 .header-sm-margin {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
     display: block;
     font-weight: 700;
     margin-bottom: 15px;
@@ -698,6 +719,36 @@ textarea {
 .step-img-holder img {
     display: inline-block!important;
     height: 300px!important;
+}
+
+
+.team-block {
+    background-image: url(../img/team_bg.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 75px 0;
+}
+.member-card {
+    width: 24.9%;
+    max-width: 265px;
+    text-align: center;
+    vertical-align: top;
+}
+.member-card:nth-child(2n) {
+    padding-top: 50px;
+}
+.member-name {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.member-place {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 0;
 }
 
 
@@ -962,6 +1013,7 @@ textarea {
     -webkit-box-orient: vertical;
 }
 .article-more-link {
+    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
     color: #1c5454;
     font-size: 14px;
     font-weight: 700;
@@ -1168,6 +1220,7 @@ textarea {
 
 .bg-dark {
     background-color: #4e4e4e;
+    font-family: "Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 .pack-grid {
     margin-top: 50px;
@@ -1208,6 +1261,7 @@ textarea {
     vertical-align: middle;
 }
 .pack-point>span {
+    font-family: "Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 22px;
     font-weight: 700;
     padding-left: 30px;
@@ -1245,11 +1299,13 @@ textarea {
     text-align: right;
     width: 20%;
     padding-left: 10px;
+    text-decoration: underline;
 }
 .back-link-page:hover {
     text-decoration: underline;
 }
 .pack-header h2 {
+    font-family: "Gothic", CenturyGothic, AppleGothic, sans-serif;
     width: 79%;
     height: 95px;
     font-size: 30px;
@@ -1335,6 +1391,7 @@ textarea {
     vertical-align: top;
 }
 .image-text-lg h4 {
+    font-family: "GothicB", CenturyGothic, AppleGothic, sans-serif;
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 0;
