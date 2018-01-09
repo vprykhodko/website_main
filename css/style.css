@@ -1234,15 +1234,23 @@ textarea {
     margin-bottom: 40px;
     position: relative;
 }
+.pack-header .container-sm {
+    display: table;
+    width: 100%;
+}
 .back-link-page {
-    float: right;
-    margin-top: -60px;
     font-size: 18px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    width: 20%;
+    padding-left: 10px;
 }
 .back-link-page:hover {
     text-decoration: underline;
 }
 .pack-header h2 {
+    width: 79%;
     height: 95px;
     font-size: 30px;
     font-weight: 700;
@@ -1987,7 +1995,7 @@ textarea {
         margin: 10px auto;
     }
     .back-link-page {
-        margin-right: 15px;
+        padding-right: 15px;
     }
 }
 @media screen and (max-width: 815px) {
