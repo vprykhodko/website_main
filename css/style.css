@@ -444,6 +444,7 @@ h2 {
     cursor: pointer;
     height: 120px;
 }
+
 /*.point-holder .image-holder svg:hover path {
     -webkit-transition: ease 0.4s;
     -moz-transition: ease 0.4s;
@@ -1231,6 +1232,15 @@ textarea {
     -moz-box-shadow: 5px 5px 0px 0px rgba(190,190,190,0.5);
     box-shadow: 5px 5px 0px 0px rgba(190,190,190,0.5);
     margin-bottom: 40px;
+    position: relative;
+}
+.back-link-page {
+    float: right;
+    margin-top: -60px;
+    font-size: 18px;
+}
+.back-link-page:hover {
+    text-decoration: underline;
 }
 .pack-header h2 {
     height: 95px;
@@ -1975,6 +1985,9 @@ textarea {
         padding-left: 10px;
         padding-right: 10px;
         margin: 10px auto;
+    }
+    .back-link-page {
+        margin-right: 15px;
     }
 }
 @media screen and (max-width: 815px) {
