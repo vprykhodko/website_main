@@ -1118,6 +1118,7 @@ textarea {
     font-size: 22px;
     margin: 0;
     padding: 30px 0 0 0;
+    font-family: "Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .album {
