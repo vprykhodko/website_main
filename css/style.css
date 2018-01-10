@@ -967,6 +967,7 @@ textarea {
     background-color: #7c7c7c!important;
     color: #fff;
     padding-left: 20px;
+    font-family: "Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 #articles_list>li {
     margin: 0;
@@ -1002,6 +1003,7 @@ textarea {
     padding: 0 40px;
     text-align: justify;
     color: #4e4e4e;
+    font-family: "Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 #articles_list .article-text-holder>span {
     color: #fff;
@@ -1013,7 +1015,7 @@ textarea {
     -webkit-box-orient: vertical;
 }
 .article-more-link {
-    font-family: "GAGALIN", CenturyGothic, AppleGothic, sans-serif;
+    font-family: "GothicB", CenturyGothic, AppleGothic, sans-serif;
     color: #1c5454;
     font-size: 14px;
     font-weight: 700;
@@ -2184,6 +2186,9 @@ textarea {
     .bg-dark .navbar-main {
         position: static;
         margin-bottom: -20px;
+    }
+    .articles-block .navbar-main {
+        position: static!important;
     }
 }
 @media screen and (max-width: 480px) {
